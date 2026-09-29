@@ -3,7 +3,12 @@ package org.evanke.springbootmall.service;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductService {
+
+    List<Product> getProducts();
+
     Product getProductById(Integer id);
 
     Integer createProduct(ProductRequest productRequest);
