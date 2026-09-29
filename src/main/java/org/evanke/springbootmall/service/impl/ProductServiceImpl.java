@@ -1,6 +1,7 @@
 package org.evanke.springbootmall.service.impl;
 
 import org.evanke.springbootmall.dao.ProductDao;
+import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 import org.evanke.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(Integer id) {
         return productDao.getProductById(id);
+    }
+
+    @Override
+    public Integer createProduct(ProductRequest productRequest) {
+        return productDao.createProduct(productRequest);
     }
 }
