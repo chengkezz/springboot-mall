@@ -1,5 +1,6 @@
 package org.evanke.springbootmall.dao.impl;
 
+import org.evanke.springbootmall.constants.ProductCategory;
 import org.evanke.springbootmall.dao.ProductDao;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
@@ -23,11 +24,23 @@ public class ProductDaoImpl implements ProductDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
-    public List<Product> getProducts() {
+    public List<Product> getProducts(ProductCategory productCategory, String search) {
         String sql = "SELECT product_id, product_name, category, image_url, price, stock, description, " +
                 "created_date, last_modified_date " +
-                "FROM product";
+                "FROM product WHERE 1=1";
         Map<String, Object> map = new HashMap<>();
+
+        if (productCategory != null) {
+            sql = sql + " AND category = :productCategory";
+            map.put("productCategory", productCategory.name());
+
+        }
+
+        if (search != null) {
+            sql = sql + " AND product_name LIKE :search";
+            map.put("search" , "%" +  search + "%");
+        }
+
         List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
 
         return productList;

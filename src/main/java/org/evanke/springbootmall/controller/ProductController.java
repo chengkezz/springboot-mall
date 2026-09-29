@@ -1,6 +1,7 @@
 package org.evanke.springbootmall.controller;
 
 import jakarta.validation.Valid;
+import org.evanke.springbootmall.constants.ProductCategory;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 import org.evanke.springbootmall.service.ProductService;
@@ -18,8 +19,11 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts() {
-        List<Product> productList = productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory productCategory,
+            @RequestParam(required = false) String search
+            ) {
+        List<Product> productList = productService.getProducts(productCategory, search);
         return  ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
