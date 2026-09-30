@@ -4,6 +4,25 @@ import org.evanke.springbootmall.constants.ProductCategory;
 
 public class ProductQueryParams {
     private ProductCategory productCategory;
+    private String search;
+    private String orderby;
+    private String sort;
+
+    public String getOrderby() {
+        return orderby;
+    }
+
+    public void setOrderby(String orderby) {
+        this.orderby = orderby;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
 
     public ProductCategory getProductCategory() {
         return productCategory;
@@ -21,7 +40,6 @@ public class ProductQueryParams {
         this.search = search;
     }
 
-    private String search;
 
 
 }
