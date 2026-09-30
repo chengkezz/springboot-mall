@@ -2,6 +2,7 @@ package org.evanke.springbootmall.controller;
 
 import jakarta.validation.Valid;
 import org.evanke.springbootmall.constants.ProductCategory;
+import org.evanke.springbootmall.dto.ProductQueryParams;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 import org.evanke.springbootmall.service.ProductService;
@@ -23,7 +24,11 @@ public class ProductController {
             @RequestParam(required = false) ProductCategory productCategory,
             @RequestParam(required = false) String search
             ) {
-        List<Product> productList = productService.getProducts(productCategory, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setProductCategory(productCategory);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
         return  ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 

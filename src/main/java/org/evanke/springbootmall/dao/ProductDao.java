@@ -1,6 +1,7 @@
 package org.evanke.springbootmall.dao;
 
 import org.evanke.springbootmall.constants.ProductCategory;
+import org.evanke.springbootmall.dto.ProductQueryParams;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface ProductDao {
 
-    List<Product> getProducts(ProductCategory productCategory,  String search);
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 

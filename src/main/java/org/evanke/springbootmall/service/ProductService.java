@@ -1,6 +1,6 @@
 package org.evanke.springbootmall.service;
 
-import org.evanke.springbootmall.constants.ProductCategory;
+import org.evanke.springbootmall.dto.ProductQueryParams;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getProducts(ProductCategory productCategory, String search);
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer id);
 

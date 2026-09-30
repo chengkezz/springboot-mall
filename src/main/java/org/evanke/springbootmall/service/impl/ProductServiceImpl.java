@@ -2,6 +2,7 @@ package org.evanke.springbootmall.service.impl;
 
 import org.evanke.springbootmall.constants.ProductCategory;
 import org.evanke.springbootmall.dao.ProductDao;
+import org.evanke.springbootmall.dto.ProductQueryParams;
 import org.evanke.springbootmall.dto.ProductRequest;
 import org.evanke.springbootmall.model.Product;
 import org.evanke.springbootmall.service.ProductService;
@@ -17,8 +18,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts(ProductCategory productCategory,  String search) {
-        return productDao.getProducts(productCategory, search);
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
     }
 
     @Override
