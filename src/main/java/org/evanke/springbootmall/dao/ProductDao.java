@@ -15,6 +15,8 @@ public interface ProductDao {
 
     Product getProductById(Integer productId);
 
+    boolean decreaseStock(Integer productId, Integer quantity);
+
     Integer createProduct(ProductRequest productRequest);
 
     void updateProduct(Integer productId, ProductRequest productRequest);
